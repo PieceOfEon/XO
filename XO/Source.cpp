@@ -44,8 +44,50 @@ public:
 				per = false;
 				break;
 			}
-			re1: cout << "Enter number 0 i: \n";
+			if (Proverka0str() == 1)
+			{
+				per = false;
 
+				break;
+			}
+			
+			if (ProverkaXstb() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (Proverka0stb() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (ProverkaXDiag() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (Proverka0Diag() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (Proverka0Diag2() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (ProverkaXDiag2() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			re1: cout << "Enter number 0 i: \n";
 
 			cin >> i;
 			cout << "Enter number 0 j: \n";
@@ -57,10 +99,52 @@ public:
 			mas[i - 1][j - 1] = '0';
 			
 			Print();
+			if (ProverkaXstb() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (Proverka0stb() == 1)
+			{
+				per = false;
+
+				break;
+			}
 			if (Proverka() == 1)
 			{
 				per = false;
 			
+				break;
+			}
+			if (Proverka0str() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (ProverkaXDiag() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (Proverka0Diag() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (Proverka0Diag2() == 1)
+			{
+				per = false;
+
+				break;
+			}
+			if (ProverkaXDiag2() == 1)
+			{
+				per = false;
+
 				break;
 			}
 			
@@ -68,7 +152,7 @@ public:
 		}
 	}
  
-	bool Proverka()
+	int Proverka()
 	{
 		bool b = 0;
 		for (int i = 0; i < str; i++)
@@ -84,16 +168,222 @@ public:
 				{
 					b = 0;
 				}
-				if (mas[i][stb - 1] == 'X' && b==0)
+				if (j == stb - 1)
 				{
-					return 1;
+					if ((mas[i][j] == 'X' && b == 0))
+					{
+						return 1;
+					}
 				}
+
 			}
 
 		}
 		return 0;
 	}
 
+	int Proverka0str()
+	{
+		bool b = 0;
+		for (int i = 0; i < str; i++)
+		{
+			for (int j = 0; j < stb; j++)
+			{
+				if (mas[i][j] != '0')
+				{
+					b = 1;
+					break;
+				}
+				else
+				{
+					b = 0;
+				}
+				if (j == stb - 1)
+				{
+					if ((mas[i][j] == '0' && b == 0))
+					{
+						return 1;
+					}
+				}
+
+			}
+
+		}
+		return 0;
+	}
+
+	bool ProverkaXstb()
+	{
+		bool b = 0;
+		for (int i = 0; i < str; i++)
+		{
+			for (int j = 0; j < stb; j++)
+			{
+				if ((mas[j][i] != 'X') )
+				{
+					b = 1;
+					break;
+				}
+				else
+				{
+					b = 0;
+				}
+				if (j==stb-1)
+				{
+					if ((mas[str-1][i] == 'X' && b == 0))
+					{
+						return 1;
+					}
+				}
+				
+			}
+
+		}
+		return 0;
+	}
+	bool Proverka0stb()
+	{
+		bool b = 0;
+		for (int i = 0; i < str; i++)
+		{
+			for (int j = 0; j < stb; j++)
+			{
+				if ((mas[j][i] != '0'))
+				{
+					b = 1;
+					break;
+				}
+				else
+				{
+					b = 0;
+				}
+				if (j == stb - 1)
+				{
+					if ((mas[str - 1][i] == '0' && b == 0))
+					{
+						return 1;
+					}
+				}
+
+			}
+
+		}
+		return 0;
+	}
+	bool ProverkaXDiag()
+	{
+		bool b = 0;
+		for (int i = 0; i < str; i++)
+		{
+			if (mas[i][i] != 'X')
+			{
+				b = 1;
+				break;
+			}
+			else
+			{
+				b = 0;
+			}
+			if (i == str - 1)
+			{
+				if ((mas[i][i] == 'X' && b == 0))
+				{
+					return 1;
+				}
+			}
+		}
+		return 0;
+	}
+
+	bool Proverka0Diag()
+	{
+		bool b = 0;
+		for (int i = 0; i < str; i++)
+		{
+			if (mas[i][i] != '0')
+			{
+				b = 1;
+				break;
+			}
+			else
+			{
+				b = 0;
+			}
+			if (i == str - 1)
+			{
+				if ((mas[i][i] == '0' && b == 0))
+				{
+					return 1;
+				}
+			}
+		}
+		return 0;
+	}
+
+	bool Proverka0Diag2()
+	{
+		bool b = 1;
+		for (int i = 0; i < str; i++)
+		{
+			for (int j = 0; j < stb; j++)
+			{
+				if (i + j == str - 1)
+				{
+					if (mas[i][j] != '0')
+					{
+						i = str - 1;
+						b = 1;
+						break;
+					}
+					else
+					{
+						b = 0;
+					}
+					if (b == 0&&i==str-1)
+					{
+							return 1;
+						
+					}
+				}
+				
+			}
+			
+			
+		}
+		return 0;
+	}
+	bool ProverkaXDiag2()
+	{
+		bool b = 1;
+		for (int i = 0; i < str; i++)
+		{
+			for (int j = 0; j < stb; j++)
+			{
+				if (i + j == str - 1)
+				{
+					if (mas[i][j] != 'X')
+					{
+						i = str - 1;
+						b = 1;
+						break;
+					}
+					else
+					{
+						b = 0;
+					}
+					if (b == 0 && i == str - 1)
+					{
+						return 1;
+
+					}
+				}
+
+			}
+
+
+		}
+		return 0;
+	}
 	void Print()
 	{
 		for (int i = 0; i < str; i++)
